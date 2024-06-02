@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aadukalam</title>
+<style>
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .gradient {
+    --size: 250px;
+    --speed: 50s;
+    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+    width: var(--size);
+    height: var(--size);
+    filter: blur(calc(var(--size) / 5));
+    background-image: linear-gradient(hsl(158, 82%, 57%, 0.85), hsl(252, 82%, 57%));
+    animation: rotate var(--speed) var(--easing) alternate infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  @media (min-width: 720px) {
+    .gradient {
+      --size: 500px;
+    }
+  }
+
+  body {
+    background-color: #222;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  /* This is just to transition when you change the viewport size. */
+  * {
+    transition: all 0.25s ease-out;
+  }
+  .container {
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.01); /* 0.5 is the opacity level, adjust as needed */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #faf0e6; /* White Linen color */
+}
+
+        .button-container button {
+            align-self: center;
+            background-color: #fff;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .button-container button:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+        .button-container button:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .active {
+            display: block;
+        }
+        .objectives-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Soft white with transparency */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: white; /* Darker text color for contrast */
+}
+.account-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Soft white with transparency */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: white; /* Darker text color for contrast */
+}
+.skills-container {
+    width: 40%;
+    max-width: 150px;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Soft white with transparency */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: white; /* Darker text color for contrast */
+    text-align: center;
+}
+.coins-container {
+    width: 100%;
+    max-width: 150px;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Soft white with transparency */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: white; /* Darker text color for contrast */
+    text-align: center;
+}
+
+        .objective {
+            margin-bottom: 20px;
+        }
+        .objective h3 {
+            color: #007bff;
+            margin-bottom: 5px;
+            font-weight: 800px;
+        }
+        .objective p {
+            margin: 0;
+        }
+        .due {
+            color: #ff0000;
+        }
+        .objectives-container button{
+            padding: 20px;
+            font-weight: 800px;
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .form-group input[type="text"] {
+        width: calc(100% - 10px);
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    .coin-img {
+        width: 40px;
+        height: 30px;
+        margin: 0 auto 50px auto;
+        display: block;
+    }
+    .pop-up {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #010101;
+        padding: 20px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+    .sbutton-container {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.sbutton-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.sbutton-container button:hover {
+    background-color: #45a049;
+}
+#address{
+        width: calc(100% - 10px);
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+}
+.content2 label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .content2 input[type="radio"] {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        #priceDisplay {
+            margin-top: 15px;
+            font-size: 32px;
+            color: rgb(255, 218, 8);
+            font-weight: 800;
+        }
+        
+
+</style>
+</head>
+
+  <div class="gradient"></div>
+    <div class="container">
+        <div class="button-container">
+            <button onclick="openSection('objectives')">Objectives</button>
+            <button onclick="openSection('account')">Account</button>
+            <button onclick="openSection('skills')">Skills</button>
+            <button onclick="openSection('coins')">Coins</button>
+        </div>
+        <div id="objectives" class="section active">
+            <h2>Objectives</h2>
+            <div class="objectives-container">
+                <div class="objective">
+                    <h3>Objective 1</h3>
+                    <p>Prepare land for sowing seeds (1 week due)</p>
+                    <input type="checkbox" id="objective1" name="objective1">
+                    <label for="objective1">Completed</label>
+                </div>
+                <div class="objective">
+                    <h3>Objective 2</h3>
+                    <p>Plant seeds and water the crops (1 week due)</p>
+                    <input type="checkbox" id="objective2" name="objective2">
+                    <label for="objective2">Completed</label>
+                </div>
+                <div class="objective">
+                    <h3>Objective 3</h3>
+                    <p>Apply fertilizers and pesticides (1 week due)</p>
+                    <input type="checkbox" id="objective3" name="objective3">
+                    <label for="objective3">Completed</label>
+                </div>
+                <button type="submit">Submit</button>
+            </div>
+            
+
+        </div>
+        <div id="account" class="section">
+            <h2>Account</h2>
+            <div class="account-container">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="Karthi" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" readonly value="Farmer">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="textbox" id="address" name="address" value="Kosapet , Vellore" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" name="age" value="34" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" value="Vellore" readonly>
+                </div>
+            </div>
+        </div>
+        <div id="skills" class="section">
+            <div class="skills-container">
+            <h2>1x Booster</h2>
+            <img src="image-removebg-preview.png" alt="Coin" class="coin-img">
+            <div class="sbutton-container">
+                <button id="activateBtn" class="activateBtn">Activate Skill</button>
+            </div>
+            <div id="popUp" class="pop-up">
+                <span class="close-btn" onclick="closePopUp()">&times;</span>
+                <p>SKILL ACTIVATED</p>
+            </div>
+        </div>
+        <div class="skills-container">
+            <h2>2x Booster</h2>
+            <img src="image-removebg-preview.png" alt="Coin" class="coin-img">
+            <div class="sbutton-container">
+                <button id="activateBtn" class="activateBtn">Activate Skill</button>
+            </div>
+            <div id="popUp" class="pop-up">
+                <span class="close-btn" onclick="closePopUp()">&times;</span>
+                <p>SKILL ACTIVATED</p>
+            </div>
+        </div>
+        </div>
+      
+    <div id="coins" class="section">
+        <h2>Coins</h2>
+        <div class="content2">
+            <label for="booster1">
+                <input type="radio" name="boosters" id="booster1" value="1450"> 1x booster
+            </label>
+            <label for="booster2">
+                <input type="radio" name="boosters" id="booster2" value="3000"> 2x booster
+            </label>
+            <label for="booster3">
+                <input type="radio" name="boosters" id="booster3" value="5600"> 3x booster
+            </label>
+            <div id="priceDisplay"></div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function openSection(sectionName) {
+            // Hide all sections
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            // Show the clicked section
+            document.getElementById(sectionName).classList.add('active');
+        }
+        document.getElementById("activateBtn").addEventListener("click", function() {
+    document.getElementById("popUp").style.display = "block";
+});
+
+function closePopUp() {
+    document.getElementById("popUp").style.display = "none";
+}
+const boosters = document.querySelectorAll('input[name="boosters"]');
+        const priceDisplay = document.getElementById('priceDisplay');
+
+        boosters.forEach(booster => {
+            booster.addEventListener('change', () => {
+                const selectedBooster = document.querySelector('input[name="boosters"]:checked');
+                priceDisplay.textContent = `COINS ${selectedBooster.value}`;
+            });
+        });
+</script>
+    </script>
+</body>
+</html>
+

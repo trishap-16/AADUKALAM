@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadukalam</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        html, body{
+            height: 100%;
+            font-weight: 800;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background: #030321;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+
+        svg {
+            display: block;
+            font: 8em 'Montserrat'; /* Adjust font size */
+            width: 100%; /* Make SVG width 100% */
+            height: auto; /* Let height adjust automatically */
+            margin: 0 auto;
+        }
+
+        .text-copy {
+            fill: none;
+            stroke: white;
+            stroke-dasharray: 6% 29%;
+            stroke-width: 5px;
+            stroke-dashoffset: 0%;
+            animation: stroke-offset 5.5s infinite linear;
+        }
+
+        .text-copy:nth-child(1){
+            stroke: #4D163D;
+            animation-delay: -1s;
+        }
+
+        .text-copy:nth-child(2){
+            stroke: #840037;
+            animation-delay: -2s;
+        }
+
+        .text-copy:nth-child(3){
+            stroke: #BD0034;
+            animation-delay: -3s;
+        }
+
+        .text-copy:nth-child(4){
+            stroke: #BD0034;
+            animation-delay: -4s;
+        }
+
+        .text-copy:nth-child(5){
+            stroke: #FDB731;
+            animation-delay: -5s;
+        }
+
+        @keyframes stroke-offset{
+            100% {stroke-dashoffset: -35%;}
+        }
+
+        /* Style for button */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hide the button */
+        }
+
+        .get-in-button {
+    text-align: center;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.get-in-button:hover {
+    color: #007bff;
+    background-color: #fff;
+}
+
+.get-in-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+.get-in-button:hover:before {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 1000 150"> <!-- Adjusted viewBox dimensions -->
+            <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="80%">ஆடுகளம்</text>
+            </symbol>
+
+            <g class="g-ants">
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Button container -->
+    <div class="button-container" id="buttonContainer">
+        <button class="get-in-button" onclick="redirectToAnotherPage()">Get In</button>
+    </div>
+
+    <script>
+        // Function to show the button after 3 seconds
+        setTimeout(function() {
+            document.getElementById('buttonContainer').style.display = 'block';
+        }, 3000);
+
+        // Function to redirect to another page when the button is clicked
+        function redirectToAnotherPage() {
+            // Replace 'anotherpage.html' with the URL of the page you want to redirect to
+            window.location.href = 'LogMenu.html';
+        }
+    </script>
+</body>
+</html>

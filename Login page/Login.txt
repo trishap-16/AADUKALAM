@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="aadhar">Aadhar Number (12 digits)</label>
+                <input type="text" id="aadhar" name="aadhar" pattern="[0-9]{12}" title="Aadhar number must be 12 digits long" required>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number (10 digits)</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Phone number must be 10 digits long" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" name="occupation" required>
+                    <option value="">Select Occupation</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Artisan">Artisan</option>
+                    <option value="Weaver">Weaver</option>
+                    <option value="Fisherman">Fisherman</option>
+                    <option value="Handicraft Worker">Handicraft Worker</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" readonly>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Calculate age based on birthdate
+        document.getElementById("birthdate").addEventListener("change", function() {
+            var birthDate = new Date(document.getElementById("birthdate").value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById("age").value = age;
+        });
+    </script>
+</body>
+</html>

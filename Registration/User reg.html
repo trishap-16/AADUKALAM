@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0D0B0B;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .submit-button{
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.submit-button::after,
+.submit-button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.submit-button::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.submit-button::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.submit-button:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.submit-button:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.submit-button:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #age {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 align='center'>User Registration</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="aadhar">Aadhar Number (12 digits)</label>
+                <input type="text" id="aadhar" name="aadhar" pattern="[0-9]{12}" title="Aadhar number must be 12 digits long" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number (10 digits)</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Phone number must be 10 digits long" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" name="occupation" required>
+                    <option value="">Select Occupation</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Artisan">Artisan</option>
+                    <option value="Weaver">Weaver</option>
+                    <option value="Fisherman">Fisherman</option>
+                    <option value="Handicraft Worker">Handicraft</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" readonly>
+            </div>
+            <button type="submit" class="submit-button" onclick="redirectToAnotherPage()">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Calculate age based on birthdate
+        document.getElementById("birthdate").addEventListener("change", function() {
+            var birthDate = new Date(document.getElementById("birthdate").value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById("age").value = age;
+        });
+        function redirectToAnotherPage() {
+            // Replace 'anotherpage.html' with the URL of the page you want to redirect to
+            window.location.href = 'LoginPge1.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+--dot-bg: black;
+  --dot-color: white;
+  --dot-size: 1px;
+  --dot-space: 22px;
+            font-family: 'Open Sans', sans-serif;
+            background:
+            linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+            linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+            var(--dot-color);
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button-container button {
+            align-self: center;
+            background-color: #fff;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .75rem;
+            text-decoration: none;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .button-container button:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+        .button-container button:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .active {
+            display: block;
+        }
+        .objectives-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .objective {
+            margin-bottom: 20px;
+        }
+        .objective h3 {
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .objective p {
+            margin: 0;
+        }
+        .due {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <button onclick="openSection('objectives')">Objectives</button>
+            <button onclick="openSection('account')">Account</button>
+            <button onclick="openSection('skills')">Skills</button>
+            <button onclick="openSection('coins')">Coins</button>
+        </div>
+        <div id="objectives" class="section active">
+            <h2>Objectives</h2>
+            <div class="objectives-container">
+                <div class="objective">
+                    <h3>Objective 1</h3>
+                    <p>Prepare land for sowing seeds (1 week due)</p>
+                </div>
+                 <div class="objective">
+            <h3>Objective 2</h3>
+            <p>Plant seeds and water the crops (1 week due)</p>
+        </div>
+        <div class="objective">
+            <h3>Objective 3</h3>
+            <p>Apply fertilizers and pesticides (1 week due)</p>
+        </div>
+    </div>
+
+        </div>
+        <div id="account" class="section">
+            <h2>Account</h2>
+            <!-- Content for Account section goes here -->
+        </div>
+        <div id="skills" class="section">
+            <h2>Skills</h2>
+            <!-- Content for Skills section goes here -->
+        </div>
+        <div id="coins" class="section">
+            <h2>Coins</h2>
+            <!-- Content for Coins section goes here -->
+        </div>
+    </div>
+
+    <script>
+        function openSection(sectionName) {
+            // Hide all sections
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            // Show the clicked section
+            document.getElementById(sectionName).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
